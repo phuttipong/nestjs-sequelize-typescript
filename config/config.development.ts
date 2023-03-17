@@ -1,13 +1,11 @@
+import path from 'path';
 import { Dialect } from 'sequelize/types';
+
 
 export const config = {
     database: {
-        dialect: 'postgres' as Dialect,
-        host: 'localhost',
-        port: 5432,
-        username: 'postgres',
-        password: 'postgres',
-        database: 'nest',
+        dialect: 'sqlite' as Dialect,
+        storage: path.join(__dirname, '..', 'db', 'app.sqlite'),
         logging: false,
     },
     jwtPrivateKey: 'jwtPrivateKey',
