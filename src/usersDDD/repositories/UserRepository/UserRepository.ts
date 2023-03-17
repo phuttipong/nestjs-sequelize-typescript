@@ -33,4 +33,26 @@ export class UserRepository {
             return Results.fail(error);
         }
     }
+
+    async findOneByEmail(email: string) {
+        try {
+            console.log('save user with tx id: %O', this.transaction);
+            const findResult = await UserDDDRow.findOne<UserDDDRow>({
+                where: { email },
+            });
+
+            const user = new User();
+            user.id = findResult.id;
+            user.email = findResult.email;
+            user.name = findResult.firstName;
+            user.lastname = findResult.lastName;
+            user.createdAt = findResult.createdAt;
+            user.updatedAt = findResult.updatedAt;
+            user.deletedAt = findResult.deletedAt;
+
+            return Results.ok(user);
+        } catch (error) {
+            return Results.fail(error);
+        }
+    }
 }

@@ -4,12 +4,6 @@ export class CreateUserInput {
     lastname: string;
 }
 
-type UserProps = {
-    email: string;
-    name: string;
-    lastname: string;
-};
-
 export class User {
     public id: string;
     public name: string;

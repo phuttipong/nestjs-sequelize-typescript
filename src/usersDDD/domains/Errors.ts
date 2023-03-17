@@ -26,3 +26,18 @@ export namespace CreateUserError {
         }
     }
 }
+
+export namespace CreatePostError {
+    export class UserNotFoundError extends FailedResult<DomainError> {
+        public constructor(email: string) {
+            const error = new DomainError(
+                `Can not find user of email "${email}".`,
+            );
+            super(error);
+        }
+
+        public static create(username: string): UserNotFoundError {
+            return new UserNotFoundError(username);
+        }
+    }
+}
