@@ -6,6 +6,7 @@
 
 # Misc
 /coverage
+.idea
 
 # System Files
 .DS_Store
